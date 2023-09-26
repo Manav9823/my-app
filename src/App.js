@@ -4,6 +4,8 @@ import TextForm from './components/TextForm';
 // import About from './components/About';
 import { useState } from 'react';
 import Alert from './components/Alert'
+import {Routes, Route } from "react-router-dom";
+import About from './components/About';
 
 
 function App() {
@@ -36,12 +38,18 @@ function App() {
 
   return (
     <>
-      <Navbar title="TextUtils2" aboutText="About Utils" mode={mode} changeMode= {changeMode}/>
-      <Alert alert={alert}/>
-      <div className="container my-3 ">
-        <TextForm heading="Enter your text here" mode={mode}></TextForm>
-        {/* <About/> */}
-      </div>
+        <Navbar title="TextUtils2"
+              aboutText="About Utils"
+              mode={mode}
+              changeMode={changeMode}
+            />
+        <Alert alert={alert} /> 
+        <div className='conatiner my-3'>
+        <Routes>
+          <Route path="/" element={<TextForm heading="Enter your text here" mode={mode}></TextForm>}/>  
+          <Route path="/about" element={<About/>}/>
+        </Routes>
+        </div>
     </>
   );
 }
